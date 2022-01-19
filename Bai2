@@ -1,0 +1,64 @@
+#include<iostream>
+#include<iomanip>
+#include<cstring>
+
+using namespace std;
+
+struct SINHVIEN {
+    char masv[100];
+    char tensv[100];
+    float dtb;
+};
+
+
+
+
+void nhapdssv(SINHVIEN dssv[], int& n) {
+    cout<<"Moi nhap so sinh vien: ";
+    cin>>n;
+    for(int i=0;i<n;i++){
+        cin.ignore();
+        cout << "Moi nhap ma sinh vien: ";
+        cin.getline(dssv[i].masv, 100);
+        cout << "Moi nhap ten sinh vien: ";
+        cin.getline(dssv[i].tensv, 100);
+        cout << "Moi nhap diem trung binh: ";
+        cin>>dssv[i].dtb;
+
+    }
+}
+void hiendssv(SINHVIEN dssv[], int n) {
+
+    cout << setw(5) << "\nMa SV" << setw(15) << "Ten SV" << setw(13) << "Diem TB" <<endl;
+    for (int i = 0; i < n; i++) {
+        cout << setw(5) << dssv[i].masv << setw(15) << dssv[i].tensv << setw(10) << dssv[i].dtb << endl;
+    }
+
+}
+void sapxep(SINHVIEN dssv[], int n){
+     SINHVIEN tg;
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (dssv[i].dtb < dssv[j].dtb) {
+                tg = dssv[i];
+                dssv[i] = dssv[j];
+                dssv[j] = tg;
+                }
+        }
+    }
+
+}
+
+
+int main() {
+    SINHVIEN sv[20];
+    int n;
+    nhapdssv(sv,n);
+    cout << "Danh sach sinh vien truoc khi sap xep la: " << endl;
+    hiendssv(sv,n);
+    sapxep(sv,n);
+    cout << "Danh sach sinh vien sau khi sap xep la: " << endl;
+    hiendssv(sv,n);
+
+    return 0;
+}
