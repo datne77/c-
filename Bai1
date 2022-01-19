@@ -1,0 +1,54 @@
+#include<iostream>
+#include<iomanip>
+#include<cstring>
+
+using namespace std;
+
+struct LOAIHANG {
+    int mahang;
+    char tenhang[100];
+    int soluong;
+    int dongia;
+    int tienhang;
+};
+
+
+
+
+void nhapdsh(LOAIHANG dsh[], int& n) {
+    cout<<"Moi nhap so mat hang";
+    cin>>n;
+    for(int i=0;i<n;i++){
+
+        cout << "Moi nhap ma hang: ";
+        cin >> dsh[i].mahang;
+        cout << "Moi nhap ten hang: ";
+        cin.ignore();
+        cin.getline(dsh[i].tenhang, 100);
+        cout << "Moi nhap so luong: ";
+        cin>>dsh[i].soluong;
+        cout << "Moi nhap don gia cua hang: ";
+        cin >> dsh[i].dongia;
+        dsh[i].tienhang=dsh[i].dongia*dsh[i].soluong;
+
+    }
+}
+void hiendsh(LOAIHANG dsh[], int n) {
+    cout << "Danh sach xe sau khi nhap la: " << endl;
+    cout << setw(5) << "\nMa hang" << setw(15) << "Ten hang" << setw(13) << "So luong" << setw(10) << "Don gia" << setw(10)<<"Tien hang"<<endl;
+    for (int i = 0; i < n; i++) {
+        cout << setw(5) << dsh[i].mahang << setw(20) << dsh[i].tenhang << setw(10) << dsh[i].soluong << setw(10) << dsh[i].dongia << setw(10)<<dsh[i].tienhang<<endl;
+    }
+
+}
+
+
+int main() {
+    LOAIHANG lh[20];
+    int n;
+    nhapdsh(lh,n);
+    hiendsh(lh,n);
+
+
+    return 0;
+}
